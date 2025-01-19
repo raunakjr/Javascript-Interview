@@ -123,3 +123,26 @@ const y = f3();
 y.inc();
 y.inc();
 y.dec();
+
+// Event Capturing
+
+const parent = document.querySelector("#parent");
+const child = document.querySelector("#child");
+
+// Parent listener in the default bubbling phase
+parent.addEventListener("click", () => {
+  console.log("Parent is clicked");
+});
+
+// Child listener in the capturing phase
+child.addEventListener("click", () => {
+  console.log("Child is clicked");
+});
+
+// Event delegation
+const x1 = document.querySelector(".x");
+x1.addEventListener("click", (e) => {
+  if (e.target && e.target.classList.contains("action-btn")) {
+    console.log("clicked", e.target.textContent);
+  }
+});
